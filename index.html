@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>14 Days Left ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 body{
 margin:0;
@@ -57,13 +56,13 @@ animation: floatUp 8s linear infinite;
 100%{transform:translateY(-120vh);opacity:0;}
 }
 
-/* PETALS */
-.petal{
+/* ROSE */
+.rose{
 position:absolute;
 top:-50px;
-width:35px;
+width:50px;
 animation: fall 10s linear infinite;
-opacity:0.8;
+opacity:0.9;
 }
 
 @keyframes fall{
@@ -77,33 +76,37 @@ opacity:0.8;
 
 <!-- SLIDE 1 -->
 <div class="slide active" id="s1">
+<h1>💖 Tap the Heart to Start 💖</h1>
+<button onclick="nextSlide()">❤️</button>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="s2">
 <h1>Do you love me? 🥺</h1>
-<img src="images.jpg" width="220" style="border-radius:20px;">
 <div>
 <button onclick="nextSlide()">YES ❤️</button>
 <button onclick="moveNo(this)">NO 😢</button>
 </div>
 </div>
 
-<!-- SLIDE 2 -->
-<div class="slide" id="s2">
+<!-- SLIDE 3 -->
+<div class="slide" id="s3">
 <h1>🚪 A Door Appears...</h1>
 <button onclick="alert('Ijazat nahi wapis jane ki 😌')">Go Back</button>
 <button onclick="nextSlide()">Knock Knock 🚪</button>
 </div>
 
-<!-- SLIDE 3 -->
-<div class="slide" id="s3">
+<!-- SLIDE 4 -->
+<div class="slide" id="s4">
 <h1>Welcome My Smile 🌹</h1>
 </div>
 
-<!-- SLIDE 4 -->
-<div class="slide" id="s4">
-<h1>❤️ 14 Days Left ❤️</h1>
+<!-- SLIDE 5 -->
+<div class="slide" id="s5">
+<h1>❤️ Advance Happy Birthday Meri Jan-e-Jahan 💖</h1>
 <p>
 Every day brings me closer to Ashu’s smile 💕<br>
-Counting 14 days for her special day 🎂✨<br><br>
-<b>Advance Birthday meri jaan-e-jahan 💖</b>
+Counting 14 days for her special day 🎂✨
 </p>
 </div>
 
@@ -115,8 +118,8 @@ document.getElementById("s"+current).classList.remove("active");
 current++;
 document.getElementById("s"+current).classList.add("active");
 
-if(current===3){petals();}
-if(current===4){balloons();}
+if(current===4){roses();}
+if(current===5){balloons();}
 }
 
 function moveNo(btn){
@@ -128,7 +131,7 @@ btn.style.top=Math.random()*80+"%";
 function balloons(){
 for(let i=0;i<22;i++){
 let b=document.createElement("img");
-b.src="images.jpg";
+b.src="images.jpg"; // balloon image
 b.className="balloon";
 b.style.left=Math.random()*100+"%";
 b.style.animationDelay=Math.random()*5+"s";
@@ -136,17 +139,18 @@ document.body.appendChild(b);
 }
 }
 
-function petals(){
+function roses(){
 for(let i=0;i<18;i++){
-let p=document.createElement("img");
-p.src="pngtree-romantic-rose-petals-png-image_26.png";
-p.className="petal";
-p.style.left=Math.random()*100+"%";
-p.style.animationDelay=Math.random()*6+"s";
-document.body.appendChild(p);
+let r=document.createElement("img");
+r.src="pngtree-romantic-rose-petals-png-image_26.png"; // rose image
+r.className="rose";
+r.style.left=Math.random()*100+"%";
+r.style.animationDelay=Math.random()*6+"s";
+document.body.appendChild(r);
 }
 }
 </script>
 
 </body>
 </html>
+
