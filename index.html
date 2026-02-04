@@ -2,155 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>14 Days Left ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ashu ❤️</title>
 <style>
-body{
-margin:0;
-padding:0;
-font-family: Arial, sans-serif;
-background: linear-gradient(to bottom, #ff758c, #ff7eb3);
-overflow:hidden;
-color:white;
-text-align:center;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(#ff9a9e, #fad0c4);
+  overflow-x: hidden;
+  color: white;
+  min-height: 100vh;
 }
-
-/* SLIDES */
-.slide{
-display:none;
-height:100vh;
-width:100%;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-padding:20px;
+h1, h2, h3 {
+  margin: 20px 0 10px;
 }
-
-.active{
-display:flex;
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px;
 }
-
-/* BUTTONS */
-button{
-padding:12px 22px;
-border:none;
-border-radius:25px;
-font-size:16px;
-margin:10px;
-cursor:pointer;
-background:#fff;
-color:#ff4d6d;
-font-weight:bold;
+.slide {
+  display: none;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
-
-/* BALLOONS */
-.balloon{
-position:absolute;
-bottom:-150px;
-width:70px;
-animation: floatUp 8s linear infinite;
-}
-
-@keyframes floatUp{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-120vh);opacity:0;}
-}
-
-/* ROSE */
-.rose{
-position:absolute;
-top:-50px;
-width:50px;
-animation: fall 10s linear infinite;
-opacity:0.9;
-}
-
-@keyframes fall{
-0%{transform:translateY(0) rotate(0deg);}
-100%{transform:translateY(120vh) rotate(360deg);}
+img.rose, img.balloon {
+  position: absolute;
+  width: 50px;
+  user-select: none;
+  pointer-events: none;
 }
 </style>
 </head>
-
 <body>
 
-<!-- SLIDE 1 -->
-<div class="slide active" id="s1">
-<h1>💖 Tap the Heart to Start 💖</h1>
-<button onclick="nextSlide()">❤️</button>
+<!-- Slide 1 -->
+<div class="slide" id="slide1" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+  <h1>❤️ Tap the Heart to Start ❤️</h1>
+  <button onclick="nextSlide(2)">💖 Tap Here 💖</button>
 </div>
 
-<!-- SLIDE 2 -->
-<div class="slide" id="s2">
-<h1>Do you love me? 🥺</h1>
-<div>
-<button onclick="nextSlide()">YES ❤️</button>
-<button onclick="moveNo(this)">NO 😢</button>
-</div>
+<!-- Slide 2 -->
+<div class="slide" id="slide2">
+  <h2>Do you love me? 😺</h2>
+  <button id="yesBtn" onclick="nextSlide(3)">Yes</button>
+  <button id="noBtn" onclick="moveNo()">No</button>
 </div>
 
-<!-- SLIDE 3 -->
-<div class="slide" id="s3">
-<h1>🚪 A Door Appears...</h1>
-<button onclick="alert('Ijazat nahi wapis jane ki 😌')">Go Back</button>
-<button onclick="nextSlide()">Knock Knock 🚪</button>
+<!-- Slide 3 -->
+<div class="slide" id="slide3">
+  <h2>Knock Knock 🚪</h2>
+  <button onclick="nextSlide(4)">Next</button>
+  <button onclick="alert('Ijazat nahi wapis jane ki')">Go Back</button>
 </div>
 
-<!-- SLIDE 4 -->
-<div class="slide" id="s4">
-<h1>Welcome My Smile 🌹</h1>
+<!-- Slide 4 -->
+<div class="slide" id="slide4">
+  <h2>Welcome My Smile 😊</h2>
+  <img src="pngtree-romantic-rose-petals-png-image_2653751.jpg" class="rose" id="rosePetal">
 </div>
 
-<!-- SLIDE 5 -->
-<div class="slide" id="s5">
-<h1>❤️ Advance Happy Birthday Meri Jan-e-Jahan 💖</h1>
-<p>
-Every day brings me closer to Ashu’s smile 💕<br>
-Counting 14 days for her special day 🎂✨
-</p>
+<!-- Slide 5 -->
+<div class="slide" id="slide5">
+  <h2>Advance Happy Birthday Meri Jan e Jahan 🎂✨</h2>
+  <p>Every day brings me closer to Ashu’s smile 💕 Counting 14 days for her special day 🎂✨</p>
+  <img src="images.jpg" class="balloon" id="balloon">
 </div>
 
 <script>
-let current=1;
+let slideIndex = 1;
+const totalSlides = 5;
 
-function nextSlide(){
-document.getElementById("s"+current).classList.remove("active");
-current++;
-document.getElementById("s"+current).classList.add("active");
-
-if(current===4){roses();}
-if(current===5){balloons();}
+function nextSlide(n){
+  if(slideIndex < totalSlides){
+    document.getElementById('slide' + slideIndex).style.display = 'none';
+    slideIndex = n;
+    document.getElementById('slide' + slideIndex).style.display = 'flex';
+    if(slideIndex === 4) startRoseAnimation();
+    if(slideIndex === 5) startBalloonAnimation();
+  }
 }
 
-function moveNo(btn){
-btn.style.position="absolute";
-btn.style.left=Math.random()*80+"%";
-btn.style.top=Math.random()*80+"%";
+// Slide 2 No button logic
+function moveNo(){
+  const noBtn = document.getElementById('noBtn');
+  noBtn.style.position = 'absolute';
+  noBtn.style.top = Math.random()*80 + "%";
+  noBtn.style.left = Math.random()*70 + "%";
+  noBtn.innerText = "😢";
 }
 
-function balloons(){
-for(let i=0;i<22;i++){
-let b=document.createElement("img");
-b.src="images.jpg"; // balloon image
-b.className="balloon";
-b.style.left=Math.random()*100+"%";
-b.style.animationDelay=Math.random()*5+"s";
-document.body.appendChild(b);
-}
+// Rose petals animation
+function startRoseAnimation(){
+  const rose = document.getElementById('rosePetal');
+  let top = 0;
+  let left = Math.random()*80;
+  rose.style.top = top + "px";
+  rose.style.left = left + "%";
+  rose.style.display = 'block';
+  setInterval(()=>{
+    top += 2;
+    left += Math.sin(top/20);
+    rose.style.top = top + "px";
+    rose.style.left = left + "%";
+    if(top > window.innerHeight) top = 0;
+  }, 50);
 }
 
-function roses(){
-for(let i=0;i<18;i++){
-let r=document.createElement("img");
-r.src="pngtree-romantic-rose-petals-png-image_26.png"; // rose image
-r.className="rose";
-r.style.left=Math.random()*100+"%";
-r.style.animationDelay=Math.random()*6+"s";
-document.body.appendChild(r);
-}
+// Balloons animation
+function startBalloonAnimation(){
+  const balloon = document.getElementById('balloon');
+  balloon.style.bottom = "-100px";
+  balloon.style.left = "50%";
+  balloon.style.position = "absolute";
+  let bottom = -100;
+  setInterval(()=>{
+    bottom += 2;
+    balloon.style.bottom = bottom + "px";
+    if(bottom > window.innerHeight) bottom = -100;
+  }, 50);
 }
 </script>
-
 </body>
 </html>
-
