@@ -200,3 +200,28 @@ function balloons(){
 
 </body>
 </html>
+<!-- SLIDE 2 -->
+<div class="slide" id="s2">
+  <h2>Do you love me? 😺</h2>
+  <!-- YES button → normal next -->
+  <button onclick="next(3)">Yes ❤️</button>
+  <!-- NO button → escape + sad emoji, no slide change -->
+  <button id="no" class="noBtn">No 😿</button>
+  <div class="sad" id="sad">😢</div>
+</div>
+
+<script>
+/* NO button random move */
+const no=document.getElementById('no');
+const sad=document.getElementById('sad');
+
+no.onmouseover=()=>{ // jab hover/approach kare
+  no.style.position='absolute';
+  no.style.left=Math.random()*80+'%';
+  no.style.top=Math.random()*60+'%';
+  sad.style.display='block';
+};
+
+/* YES button already next(3) call karta hai, no change */
+</script>
+
