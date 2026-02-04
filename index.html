@@ -13,6 +13,8 @@ body{
   text-align:center;
   overflow:hidden;
 }
+
+/* SLIDES */
 .slide{
   display:none;
   min-height:100vh;
@@ -28,6 +30,8 @@ body{
   display:flex;
   opacity:1;
 }
+
+/* BUTTONS */
 button{
   padding:12px 25px;
   font-size:18px;
@@ -38,16 +42,19 @@ button{
   cursor:pointer;
   margin:10px;
 }
+
+/* HEART */
 #heart{
   font-size:100px;
   animation:pulse 1s infinite;
   cursor:pointer;
-}document.getElementById('heart').onclick = () => next(2);
-
+}
 @keyframes pulse{
   0%,100%{transform:scale(1);}
   50%{transform:scale(1.3);}
 }
+
+/* NO button */
 .noBtn{
   position:absolute;
   transition:0.3s;
@@ -56,6 +63,8 @@ button{
   font-size:60px;
   display:none;
 }
+
+/* ROSE */
 .rose{
   width:30px;
   position:absolute;
@@ -65,6 +74,8 @@ button{
 @keyframes fall{
   to{top:110%;}
 }
+
+/* BALLOON */
 #balloons img{
   width:50px;
   position:absolute;
@@ -74,6 +85,8 @@ button{
 @keyframes fly{
   to{bottom:120%;}
 }
+
+/* DOOR shake */
 .door{
   font-size:80px;
   animation:shake 0.5s infinite;
@@ -130,6 +143,10 @@ button{
 <script>
 const slides=document.querySelectorAll('.slide');
 
+/* Heart click to start */
+document.getElementById('heart').onclick = () => next(2);
+
+/* Move to next slide */
 function next(n){
   slides.forEach(s=>{
     s.classList.remove('active');
@@ -148,7 +165,7 @@ no.onmouseover=()=>{
   sad.style.display='block';
 };
 
-/* Go back block */
+/* Go back logic */
 function noBack(){
   document.getElementById('msg').innerText="Ijazat nahi wapis jane ki 😅";
 }
@@ -159,7 +176,7 @@ function roses(){
   r.innerHTML='';
   for(let i=0;i<20;i++){
     let img=document.createElement('img');
-    img.src='rose-petal.png'; // add correct path
+    img.src='rose-petal.png'; // change to correct path
     img.className='rose';
     img.style.left=Math.random()*100+'%';
     img.style.animationDuration=4+Math.random()*3+'s';
@@ -180,6 +197,6 @@ function balloons(){
   }
 }
 </script>
+
 </body>
 </html>
-
