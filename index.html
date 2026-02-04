@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>14 Days Left ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+margin:0;
+padding:0;
+font-family: Arial, sans-serif;
+background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+overflow:hidden;
+color:white;
+text-align:center;
+}
+
+/* SLIDES */
+.slide{
+display:none;
+height:100vh;
+width:100%;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+}
+
+.active{
+display:flex;
+}
+
+/* BUTTONS */
+button{
+padding:12px 22px;
+border:none;
+border-radius:25px;
+font-size:16px;
+margin:10px;
+cursor:pointer;
+background:#fff;
+color:#ff4d6d;
+font-weight:bold;
+}
+
+/* BALLOONS */
+.balloon{
+position:absolute;
+bottom:-150px;
+width:70px;
+animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
+
+/* PETALS */
+.petal{
+position:absolute;
+top:-50px;
+width:35px;
+animation: fall 10s linear infinite;
+opacity:0.8;
+}
+
+@keyframes fall{
+0%{transform:translateY(0) rotate(0deg);}
+100%{transform:translateY(120vh) rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide active" id="s1">
+<h1>Do you love me? 🥺</h1>
+<img src="images.jpg" width="220" style="border-radius:20px;">
+<div>
+<button onclick="nextSlide()">YES ❤️</button>
+<button onclick="moveNo(this)">NO 😢</button>
+</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="s2">
+<h1>🚪 A Door Appears...</h1>
+<button onclick="alert('Ijazat nahi wapis jane ki 😌')">Go Back</button>
+<button onclick="nextSlide()">Knock Knock 🚪</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="s3">
+<h1>Welcome My Smile 🌹</h1>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide" id="s4">
+<h1>❤️ 14 Days Left ❤️</h1>
+<p>
+Every day brings me closer to Ashu’s smile 💕<br>
+Counting 14 days for her special day 🎂✨<br><br>
+<b>Advance Birthday meri jaan-e-jahan 💖</b>
+</p>
+</div>
+
+<script>
+let current=1;
+
+function nextSlide(){
+document.getElementById("s"+current).classList.remove("active");
+current++;
+document.getElementById("s"+current).classList.add("active");
+
+if(current===3){petals();}
+if(current===4){balloons();}
+}
+
+function moveNo(btn){
+btn.style.position="absolute";
+btn.style.left=Math.random()*80+"%";
+btn.style.top=Math.random()*80+"%";
+}
+
+function balloons(){
+for(let i=0;i<22;i++){
+let b=document.createElement("img");
+b.src="images.jpg";
+b.className="balloon";
+b.style.left=Math.random()*100+"%";
+b.style.animationDelay=Math.random()*5+"s";
+document.body.appendChild(b);
+}
+}
+
+function petals(){
+for(let i=0;i<18;i++){
+let p=document.createElement("img");
+p.src="pngtree-romantic-rose-petals-png-image_26.png";
+p.className="petal";
+p.style.left=Math.random()*100+"%";
+p.style.animationDelay=Math.random()*6+"s";
+document.body.appendChild(p);
+}
+}
+</script>
+
+</body>
+</html>
